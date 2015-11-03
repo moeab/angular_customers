@@ -1,0 +1,13 @@
+* {
+	margin: 0 auto;
+	text-align: center;
+}
+th, td {
+	padding: 10px;
+}
+form {
+	margin: 60px;
+}
+#search {
+	margin: 10px;
+}
