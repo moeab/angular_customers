@@ -17,15 +17,25 @@ myApp.factory("customerFactory", function(){
 })
 
 myApp.controller('customerController', function($scope, customerFactory){
-	$scope.customers = []
-	customerFactory.getCustomers(function(data){
+		$scope.customers = []
+		customerFactory.getCustomers(function(data){
 		$scope.customers = data;
 	})
-
 	$scope.addCustomer = function(){
-		$scope.newCustomer.created_at = new Date().toDateString();
-		$scope.customers.push($scope.newCustomer);
-		$scope.newCustomer = {};
+		for (var i = $scope.customers.length - 1; i >= 0; i--) {
+			if ($scope.newCustomer.name != $scope.customers[i].name){
+				if(i == 0){
+					$scope.error = '';
+					$scope.newCustomer.created_at = new Date().toDateString();
+					$scope.customers.push($scope.newCustomer);
+					$scope.newCustomer = {};
+				}
+			} else {
+				$scope.error ='Name already exists'
+				$scope.newCustomer = {};
+				break;
+			}
+		}
 	}
 	$scope.removeCustomer = function(customer){
 		$scope.customers.splice($scope.customers.indexOf(customer), 1);

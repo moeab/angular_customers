@@ -13,9 +13,10 @@
 		<form>
 			<h1>Add a new customer</h1>
 			Customer Name: <input type="text" ng-model="newCustomer.name" >
-			<input type="hidden" nag-model="newCustomer.created_at">
+			<input type="hidden" ng-model="newCustomer.created_at">
 			<input type="submit" value="add" ng-click = "addCustomer()" class='btn btn-default'>
 		</form>
+		<p id="error" ng-bind="error"></p>
 		<input id="search" type="text" ng-model="name_filter" placeholder="Search">
 		<table class="table-bordered table-striped">
 			<th>Customer Name</th>
